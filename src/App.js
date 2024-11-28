@@ -1,11 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './MyComponents/Header';
+import Todos from './MyComponents/Todos';
+import Todo from './MyComponents/Todo';
+import Footer from './MyComponents/Footer';
+
 
 function App() {
   return (
     <>
-    <h3>My App</h3>
-    <p>My app works</p>
+    <Header title = "My Todos List" searchBar = {true}/>
+    <Todos/>
+    <Todo/>
+    <Footer/>
     </>
   );
 }
