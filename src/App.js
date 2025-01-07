@@ -4,9 +4,14 @@ import {Todos} from './MyComponents/Todos';
 // import Todo from './MyComponents/Todo';
 import {Footer} from './MyComponents/Footer';
 import {AddTodo} from './MyComponents/AddTodo';
+import {About} from './MyComponents/About';
 import React, { useState, useEffect } from 'react';
-import { use } from 'react';
-import { cleanup } from '@testing-library/react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
@@ -47,7 +52,7 @@ function App() {
     console.log(myTodo);
     
   }
-  const [todos, setTodos] = useState([initTodo]);
+  const [todos, setTodos] = useState(initTodo);
   useEffect(()=>{
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
@@ -56,10 +61,23 @@ function App() {
   
   return (
     <>
+    <Router>
     <Header title = "My Todos List" searchBar = {true}/>
-    <AddTodo addTodo= {addTodo}/>
-    <Todos todos={todos} onDelete = {onDelete}/>
+    <Routes>
+          <Route exact path="/" element={
+          
+            <>
+            <AddTodo addTodo= {addTodo}/>
+            <Todos todos={todos} onDelete = {onDelete}/>
+            </>
+          }>
+          </Route>
+          <Route exact path="/about" element={<About />}>
+            
+          </Route>
+    </Routes>
     <Footer/>
+    </Router>
     </>
   );
 }

@@ -11,8 +11,13 @@ export const AddTodo = (props) => {
         e.preventDefault();
         if (!title || !desc){
             alert("Title or description cannot be blank")
+        }else{
+            props.addTodo(title, desc);
+            setTitle("");
+            setDesc("");
+
         }
-        props.addTodo(title, desc);
+        
 
     }
   return (
